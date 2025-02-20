@@ -1,45 +1,41 @@
-import React from 'react'
-import { Button } from './components/ui/button'
-import Login from './pages/Login'
-import Navbar from './components/Navbar'
-import HeroSection from './pages/student/HeroSection'
-import { createBrowserRouter, RouterProvider } from 'react-router'
-import MainLayout from './layout/MainLayout'
-import path from 'path'
-import Courses from './pages/student/Courses'
-import MyLearing from './pages/student/MyLearing'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Navbar from "./components/Navbar";
+import HeroSection from "./pages/student/HeroSection";
+import Courses from "./pages/student/Courses";
+import MyLearning from "./pages/student/MyLearning";
+import MainLayout from "./layout/MainLayout";
+import Course from "./pages/student/Course";
+import Profile from "./pages/student/Profile";
+import Dashboard from "./pages/student/Dashboard";
 
 
-const appRouter=createBrowserRouter([
-  {
-    path:'/',
-    element:(<> 
-    <HeroSection/>
-    <Courses/>
-    {/* couses */}
+const Home = () => {
+  return (
+    <>
+      <HeroSection />
+      <Course /> {/* Courses Section */}
     </>
-    ),
-
-  },
-  {
-    path:'login',
-    element:<Login/>
-  },
-  {
-    path:'my-learning',
-    element:<MyLearing/>
-  }
-  
-])
+  );
+};
 const App = () => {
   return (
-    <main>
-      <Navbar/>
-    <RouterProvider router={appRouter}>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/my-learning" element={<MyLearning />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+      {/* <Footer /> */}
+    </>
+  );
+};
 
-    </RouterProvider>
-    </main>
-  )
-}
-
-export default App
+export default App;

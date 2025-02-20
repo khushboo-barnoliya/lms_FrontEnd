@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MyLearing = () => {
+const MyLearning = () => {
     
   return (
     <div className='max-w-4xl mx-auto my-10 px-4 md:px-0 mt-24 '>
@@ -9,4 +9,4 @@ const MyLearing = () => {
   )
 }
 
-export default MyLearing
+export default MyLearning
